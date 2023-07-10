@@ -1,0 +1,40 @@
+#/bin/bash
+
+#Install and setup zsh
+
+sudo apt install zsh -y
+zsh --version
+echo $SHELL
+
+chsh -s /usr/bin/zsh
+
+wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+
+sudo apt install git
+
+cd ~
+mkdir -p .config/nvim
+mkdir tempSetup
+cd tempSetup
+wget https://github.com/npadhya/my-linux-setup/archive/refs/tags/latest.zip
+rm latest.zip
+
+cd my-linux-setup-latest
+
+cp zshrc ~/.zshrc
+cp oh_my_zsh ~/.oh-my-zsh
+
+cd nvim-config
+cp -r * ~/.config/nvim
+
+
+# install DroidSansMono Nerd Font --> u can choose another at: https://www.nerdfonts.com/font-downloads
+echo "[-] Download fonts [-]"
+https://github.com/ryanoasis/nerd-fonts/releases/latest
+
+echo "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip"
+wget https://github.com/npadhya/my-linux-setup/releases/download/v3.0.2/Hack.zip
+unzip Hack.zip -d ~/.fonts
+fc-cache -fv
+echo "done!"
+
